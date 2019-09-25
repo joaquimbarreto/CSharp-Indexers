@@ -31,12 +31,24 @@ namespace Indexers
 
         private void findByNameClick(object sender, RoutedEventArgs e)
         {
-            // TODO:
+            string text = name.Text;
+            if (!String.IsNullOrEmpty(text))
+            {
+                Name personsName = new Name(text);
+                PhoneNumber personsPhoneNumber = this.phoneBook[personsName];
+                phoneNumber.Text = String.IsNullOrEmpty(personsPhoneNumber.Text) ? "Not found." : personsPhoneNumber.Text;
+            }
         }
 
         private void findByPhoneNumberClick(object sender, RoutedEventArgs e)
         {
-            // TODO:
+            string text = phoneNumber.Text;
+            if (!String.IsNullOrEmpty(text))
+            {
+                PhoneNumber personsPhoneNumber = new PhoneNumber(text);
+                Name personsName = this.phoneBook[personsPhoneNumber];
+                name.Text = String.IsNullOrEmpty(personsName.Text) ? "Not found." : personsName.Text;
+            }
         }
 
         private void addClick(object sender, RoutedEventArgs e)
